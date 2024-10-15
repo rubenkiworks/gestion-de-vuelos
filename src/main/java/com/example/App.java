@@ -27,6 +27,9 @@ public class App
         vuelos.stream().filter(v -> v.getDuracionVuelo() > 10)
         .collect(Collectors.toList());
 
-        
+        //Ejercicio 4
+        vuelos.stream().filter(v -> v.getDuracionVuelo() > 24)
+        .collect(Collectors.toList());
+
     }
 }
