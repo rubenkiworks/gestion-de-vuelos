@@ -36,6 +36,17 @@ public class App
         //Ejercicio 5
         vuelos.stream().max(Comparator.comparing(v -> v)).ifPresent(maxInt->System.out.println(maxInt));
         
+        //Ejercicio 6
+        Map<String, List<Vuelo>> pasajerosPorDestino = vuelos.stream()
+                .collect(Collectors.groupingBy(vuelo -> vuelo.getDestino()));
         
+        pasajerosPorDestino.entrySet().stream().forEach(entry -> {
+                    System.out.println("Para el destino " + entry.getKey());
+        
+                    entry.getValue().stream().
+                    forEach(entry2 -> entry2.getPasajeros().stream().forEach(System.out::println));
+                });
+        
+        // 
     }
 }
