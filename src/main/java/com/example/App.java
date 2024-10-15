@@ -2,6 +2,8 @@ package com.example;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -31,5 +33,9 @@ public class App
         vuelos.stream().filter(v -> v.getDuracionVuelo() > 24)
         .collect(Collectors.toList());
 
+        //Ejercicio 5
+        vuelos.stream().max(Comparator.comparing(v -> v)).ifPresent(maxInt->System.out.println(maxInt));
+        
+        
     }
 }

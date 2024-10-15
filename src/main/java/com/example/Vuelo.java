@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 
-public class Vuelo {
+public class Vuelo implements Comparable<Vuelo>{
     private String destino;
-    private double precio;
+    private Double precio;
     private LocalDate fechaSalida;
     private LocalTime horaSalida;
     private LocalDate fechaLlegada;
@@ -120,5 +120,12 @@ public class Vuelo {
 
     public Long getDuracionVuelo(){
         return ChronoUnit.HOURS.between(fechaSalida.atTime(horaSalida), fechaLlegada.atTime(horaLlegada));
+    }
+
+    @Override
+    public int compareTo(Vuelo vuelo) {
+        int cmpPrecio = this.precio.compareTo(vuelo.getPrecio());
+
+        return cmpPrecio != 0 ? cmpPrecio : 0;
     }
 }
