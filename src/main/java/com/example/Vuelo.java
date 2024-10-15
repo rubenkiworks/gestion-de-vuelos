@@ -111,7 +111,7 @@ public class Vuelo {
         .fechaSalida(LocalDate.now())
         .horaSalida(LocalTime.of(21, 50))
         .numeroPlazas(3)
-        .pasajeros(pasajeros1)
+        .pasajeros(pasajeros2)
         .build());
         
         return vuelos;
