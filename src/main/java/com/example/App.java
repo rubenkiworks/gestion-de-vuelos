@@ -47,6 +47,8 @@ public class App
                     forEach(entry2 -> entry2.getPasajeros().stream().forEach(System.out::println));
                 });
         
-        // 
+        // Ejercicio 7
+        vuelos.stream().filter(v -> v.getFechaSalida().getMonth().equals(v.getFechaSalida().plusDays(10).getMonth()))
+        .collect(Collectors.toList());
     }
 }
