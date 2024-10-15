@@ -3,6 +3,7 @@ package com.example;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,8 +79,8 @@ public class Vuelo {
         .precio(600.99)
         .fechaSalida(LocalDate.of(2024, Month.NOVEMBER, 1))
         .horaSalida(LocalTime.of(7, 45))
-        .fechaSalida(LocalDate.of(2024, Month.NOVEMBER, 2))
-        .horaSalida(LocalTime.of(7, 50))
+        .fechaLlegada(LocalDate.of(2024, Month.NOVEMBER, 2))
+        .horaLlegada(LocalTime.of(7, 50))
         .numeroPlazas(3)
         .pasajeros(pasajeros1)
         .build());
@@ -88,8 +89,8 @@ public class Vuelo {
         .precio(100.99)
         .fechaSalida(LocalDate.of(2024, Month.OCTOBER, 18))
         .horaSalida(LocalTime.of(7, 45))
-        .fechaSalida(LocalDate.of(2024, Month.OCTOBER, 18))
-        .horaSalida(LocalTime.of(9, 50))
+        .fechaLlegada(LocalDate.of(2024, Month.OCTOBER, 18))
+        .horaLlegada(LocalTime.of(9, 50))
         .numeroPlazas(3)
         .pasajeros(pasajeros2)
         .build());
@@ -98,8 +99,8 @@ public class Vuelo {
         .precio(125.99)
         .fechaSalida(LocalDate.of(2024, Month.OCTOBER, 17))
         .horaSalida(LocalTime.of(7, 45))
-        .fechaSalida(LocalDate.of(2024, Month.NOVEMBER, 17))
-        .horaSalida(LocalTime.of(10, 50))
+        .fechaLlegada(LocalDate.of(2024, Month.OCTOBER, 17))
+        .horaLlegada(LocalTime.of(10, 50))
         .numeroPlazas(3)
         .pasajeros(pasajeros1)
         .build());
@@ -108,12 +109,16 @@ public class Vuelo {
         .precio(125.99)
         .fechaSalida(LocalDate.now())
         .horaSalida(LocalTime.of(18, 20))
-        .fechaSalida(LocalDate.now())
-        .horaSalida(LocalTime.of(21, 50))
+        .fechaLlegada(LocalDate.now())
+        .horaLlegada(LocalTime.of(21, 50))
         .numeroPlazas(3)
         .pasajeros(pasajeros2)
         .build());
         
         return vuelos;
+    }
+
+    public Long getDuracionVuelo(){
+        return ChronoUnit.HOURS.between(fechaSalida.atTime(horaSalida), fechaLlegada.atTime(horaLlegada));
     }
 }
