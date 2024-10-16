@@ -115,6 +115,16 @@ public class Vuelo implements Comparable<Vuelo>{
         .pasajeros(pasajeros2)
         .build());
         
+        vuelos.add(Vuelo.builder().destino("Milan")
+        .precio(120.99)
+        .fechaSalida(LocalDate.of(2024, Month.OCTOBER, 28))
+        .horaSalida(LocalTime.of(7, 45))
+        .fechaLlegada(LocalDate.of(2024, Month.OCTOBER, 28))
+        .horaLlegada(LocalTime.of(10, 50))
+        .numeroPlazas(3)
+        .pasajeros(pasajeros1)
+        .build());
+
         return vuelos;
     }
 

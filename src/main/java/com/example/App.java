@@ -1,8 +1,6 @@
 package com.example;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -17,25 +15,31 @@ public class App {
     public static void main(String[] args) {
         //Ejercicio 1
         List<Vuelo> vuelos = Vuelo.getVuelos();
-        vuelos.stream().filter(v -> v.getPasajeros().stream().count() == v.getNumeroPlazas())
+        List<Vuelo> vuelosLlenos = vuelos.stream().filter(v -> v.getPasajeros().stream().count() == v.getNumeroPlazas())
                 .collect(Collectors.toList());
+        System.out.println("ejercicio 1 (vuelos llenos): " + vuelosLlenos);
 
         //Ejercicio 2
-        vuelos.stream().filter(v -> v.getFechaSalida().equals(LocalDate.now()))
+        List<Vuelo> vuelosHoy = vuelos.stream().filter(v -> v.getFechaSalida().equals(LocalDate.now()))
                 .collect(Collectors.toList());
+        System.out.println("ejercicio 2 (vuelos hoy): " + vuelosHoy);
 
         //Ejercicio 3
-        vuelos.stream().filter(v -> v.getDuracionVuelo() > 10)
+        List<Vuelo> vuelosMasDiezHoras = vuelos.stream().filter(v -> v.getDuracionVuelo() > 10)
                 .collect(Collectors.toList());
+        System.out.println("ejercicio 3 (vuelos +10 horas): " + vuelosMasDiezHoras);
 
         //Ejercicio 4
-        vuelos.stream().filter(v -> v.getDuracionVuelo() > 24)
+        List<Vuelo> vuelosMasVenticuatroHoras = vuelos.stream().filter(v -> v.getDuracionVuelo() > 24)
                 .collect(Collectors.toList());
+        System.out.println("ejercicio 4 (vuelos +24 horas): " + vuelosMasVenticuatroHoras);
 
         //Ejercicio 5
+        System.out.println("ejercicio 5 (vuelo mas caro): ");
         vuelos.stream().max(Comparator.comparing(v -> v)).ifPresent(maxInt -> System.out.println(maxInt));
 
         //Ejercicio 6
+        System.out.println("Ejercicio 6");
         Map<String, List<Vuelo>> pasajerosPorDestino = vuelos.stream()
                 .collect(Collectors.groupingBy(vuelo -> vuelo.getDestino()));
 
@@ -47,9 +51,10 @@ public class App {
         });
 
         // Ejercicio 7
-        vuelos.stream().filter(v -> v.getFechaSalida().getMonth().
-                equals(v.getFechaSalida().plusDays(10).getMonth()))
+        List<Vuelo> vuelosUltimosDiezDiasDelMes = vuelos.stream().filter(v -> v.getFechaSalida().getMonth().
+                equals(v.getFechaSalida().plusDays(11).getMonth()) == false)
                 .collect(Collectors.toList());
+        System.out.println("ejercicio 7 (vuelos que salen en los ultimos 10 dias del mes): " + vuelosUltimosDiezDiasDelMes);
 
         //Ejercicio 8
         System.out.println("ejeercicio 8");
@@ -69,6 +74,8 @@ public class App {
             });
         });
 
-        
+        // Ejercicio 9
+        //pasajerosPorEdadSexo.entrySet()
+
     }
 }

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 
-public class Pasajero {
+public class Pasajero implements Comparable<Pasajero>{
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
@@ -130,5 +130,15 @@ public class Pasajero {
         );
 
         return pasajeros;
+    }
+
+    @Override
+    public int compareTo(Pasajero pasajero) {
+        int cmpPrimerApellido = this.primerApellido.compareTo(pasajero.getPrimerApellido());
+        int cmpSegundoApellido = this.segundoApellido.compareTo(pasajero.getSegundoApellido());
+        int cmpNombre = this.nombre.compareTo(pasajero.getNombre());
+
+        return cmpNombre != 0 ? cmpNombre : 
+                       cmpPrimerApellido != 0 ? cmpPrimerApellido : cmpSegundoApellido;
     }
 }
